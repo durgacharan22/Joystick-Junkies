@@ -10,7 +10,7 @@ import Foundation
 
 class Game{
     
-    
+    var games:[String] = ["Mario","Counter Strike","Project IGI","Contra","GTA Vicecity","FIFA"]
     
     
     func verifyLogin(email:String,password:String) -> (Bool,String) {

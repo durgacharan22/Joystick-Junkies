@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginClicked(_ sender: UIButton) {
+     
         let (a,b):(Bool,String) = model.verifyLogin(email: emailTF.text!, password: passwordTF.text!)
         if !a {
             let alert = UIAlertController(title: "Alert", message: b , preferredStyle: .alert)
