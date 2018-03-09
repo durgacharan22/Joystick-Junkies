@@ -10,7 +10,7 @@ import Foundation
 
 class Game{
     
-    var games:[String] = ["Mario","Counter Strike","Project IGI","Contra","GTA Vicecity","FIFA"]
+    var games:[String] = ["Mario","Counter Strike","Project IGI","Contra","GTA Vice City","FIFA 18"]
     
     
     func verifyLogin(email:String,password:String) -> (Bool,String) {
@@ -61,7 +61,7 @@ class Game{
             registered = false
             message += "Passwords Do not match \n"
         }
-        print("\(registered)      message  :  \(message)")
+     //   print("\(registered)      message  :  \(message)")
         return (registered,message)
     }
     
