@@ -13,6 +13,7 @@ class Game{
     var games:[String] = ["Mario","Counter Strike","Project IGI","Contra","GTA Vice City","FIFA 18"]
     
     var gamesGenre:[String] = ["Action","Fantasy","Kids"]
+    
     func verifyLogin(email:String,password:String) -> (Bool,String) {
         if email.contains("@") && password.trimmingCharacters(in: .whitespaces).count > 4 {
             return (true,"")

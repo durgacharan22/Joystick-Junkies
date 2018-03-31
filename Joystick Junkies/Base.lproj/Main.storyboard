@@ -71,7 +71,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIE-Gs-eKa">
                                 <rect key="frame" x="137" y="487" width="100" height="30"/>
@@ -89,6 +89,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUpClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hu0-rB-ciR"/>
+                                    <segue destination="Air-cA-Cf3" kind="show" identifier="RegistrationToLogin" id="9y4-eN-yLJ"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ru-ef-eHL">
@@ -113,9 +114,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHH-L1-3I1">
-                                <rect key="frame" x="175" y="565" width="107" height="30"/>
+                                <rect key="frame" x="137" y="555" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="Login Page">
+                                    <color key="titleColor" red="0.010747247409326421" green="0.0023072945190016616" blue="0.0013537962138827075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="Air-cA-Cf3" kind="show" id="VkD-4z-VHB"/>
                                 </connections>
@@ -136,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="116.49175412293854"/>
+            <point key="canvasLocation" x="215" y="60"/>
         </scene>
         <!--Seller Information-->
         <scene sceneID="gvd-2c-Lxp">
@@ -309,7 +314,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="registerloginB:" destination="xLv-JK-5C1" eventType="touchUpInside" id="5nr-Km-7H7"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="dSd-Pq-ZB4"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="NotRegistered" id="dSd-Pq-ZB4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tc-dk-Ms8">
@@ -330,19 +335,41 @@
                                     <segue destination="2Mg-DH-xUc" kind="show" identifier="LoginSegue" id="3Oi-Bz-eMW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAW-Yh-95R">
+                                <rect key="frame" x="18" y="86" width="341" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.21468701995260664" blue="0.12596678594259292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIe-i8-aWs">
+                                <rect key="frame" x="84" y="400" width="214" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Continue Without Logging"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="2Mg-DH-xUc" kind="show" id="BJA-l0-J3y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.61561751365661621" green="0.61572593450546265" blue="0.61561065912246704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="AcQ-71-Uh9"/>
                     </view>
                     <connections>
                         <outlet property="emailTF" destination="W3t-K3-sxv" id="7Ss-xh-Ebr"/>
+                        <outlet property="errorLBL" destination="qAW-Yh-95R" id="qOK-qg-4z0"/>
                         <outlet property="passwordTF" destination="0rk-ji-5Rs" id="Q5t-DU-EU1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apV-8u-u0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xLv-JK-5C1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1117.5999999999999" y="102.99850074962519"/>
+            <point key="canvasLocation" x="1157.5999999999999" y="59.820089955022496"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="gkv-4Z-DYF">
@@ -771,9 +798,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zef-tG-FVC"/>
-        <segue reference="tYf-G7-SCM"/>
-        <segue reference="VkD-4z-VHB"/>
-        <segue reference="chA-AL-noR"/>
+        <segue reference="Iu1-Di-oIG"/>
+        <segue reference="3Oi-Bz-eMW"/>
+        <segue reference="gDH-Kg-skf"/>
+        <segue reference="dSd-Pq-ZB4"/>
     </inferredMetricsTieBreakers>
 </document>

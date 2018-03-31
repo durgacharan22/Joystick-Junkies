@@ -16,7 +16,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    
+    override func viewDidAppear(_ animated: Bool) {
+        performSegue = false
+    }
     
  
     override func didReceiveMemoryWarning() {
@@ -35,7 +37,7 @@ class ViewController: UIViewController {
     
     var model = AppDelegate.model
     
-    
+    var performSegue:Bool = false
     
     
     
@@ -55,6 +57,8 @@ class ViewController: UIViewController {
         
         }else{
             
+            
+            
            let user = PFUser()
             user.username = emailTF.text!
             //usernameTF.text!
@@ -72,26 +76,21 @@ class ViewController: UIViewController {
                 (success, error) -> Void in
                 if let error = error as Error? {
                     let errorString = error.localizedDescription// In case something went wrong, use errorString to get the error
-                    self.displayOKAlert(title: "Something has gone wrong", message:"\(errorString)")
+                    self.displayOKAlert(title: "Something has gone wrong", message:"\(errorString)",doSegue: false)
                     
                 } else { // Everything went okay
-                    self.displayOKAlert(title: "Success!", message:"Registration was successful")
-                    let emailVerified = user["emailVerified"]
-                    if emailVerified != nil && (emailVerified as! Bool) == true { // Everything is fine
-                        
-                    } else { // The email has not been verified, so logout the user
-                        PFUser.logOut()
-                        
-                    }
+                            self.displayOKAlert(title: "Success!", message:"Registration was successful",doSegue: true)
                     
-                }
-                
-            })
-            
-            
-            
-            
-            
+                    
+                            let emailVerified = user["emailVerified"]
+                            if emailVerified != nil && (emailVerified as! Bool) == true { // Everything is fine
+                            } else { // The email has not been verified, so logout the user
+                                PFUser.logOut()
+                                }
+                    
+                    }
+               })
+    
         }
         
         
@@ -99,9 +98,14 @@ class ViewController: UIViewController {
     
     
     
-    func displayOKAlert(title: String, message: String) {
+    func displayOKAlert(title: String, message: String, doSegue: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK",          style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK",style: .default , handler: { _ in
+            if doSegue {
+               self.performSegue(withIdentifier: "RegistrationToLogin", sender: nil)
+            }
+        })
+        )
         self.present(alert, animated: true)
         
     }
@@ -109,7 +113,9 @@ class ViewController: UIViewController {
     
     
     
-    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return identifier == "RegistrationToLogin" ? false : true
+    }
     
     
     
