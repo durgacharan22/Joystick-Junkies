@@ -19,6 +19,7 @@
 		3FEED45820532DBC00CEC59A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEED45720532DBC00CEC59A /* LoginViewController.swift */; };
 		3FF68FAA20534A9800FAA3AF /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF68FA920534A9800FAA3AF /* GameTableViewCell.swift */; };
 		3FF68FAC20534B1000FAA3AF /* GamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF68FAB20534B1000FAA3AF /* GamesTableViewController.swift */; };
+		EA189303D94BD07D9BFC988D /* Pods_Joystick_Junkies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CC06704D60F0B6E0DE76 /* Pods_Joystick_Junkies.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,9 @@
 		3FEED45720532DBC00CEC59A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3FF68FA920534A9800FAA3AF /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		3FF68FAB20534B1000FAA3AF /* GamesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewController.swift; sourceTree = "<group>"; };
+		474FE03EE6A7BC93C5EF6284 /* Pods-Joystick Junkies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joystick Junkies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies.release.xcconfig"; sourceTree = "<group>"; };
+		6F18D9F330169BF4BAEEC064 /* Pods-Joystick Junkies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joystick Junkies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies.debug.xcconfig"; sourceTree = "<group>"; };
+		C1F0CC06704D60F0B6E0DE76 /* Pods_Joystick_Junkies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Joystick_Junkies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA189303D94BD07D9BFC988D /* Pods_Joystick_Junkies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,8 @@
 			children = (
 				3F4AE39F2036AAA5002B06CE /* Joystick Junkies */,
 				3F4AE39E2036AAA5002B06CE /* Products */,
+				CF52EC6D9528A988166BACAE /* Pods */,
+				ACF56C38EDFE4092F35ECE2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +92,23 @@
 			path = "Joystick Junkies";
 			sourceTree = "<group>";
 		};
+		ACF56C38EDFE4092F35ECE2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1F0CC06704D60F0B6E0DE76 /* Pods_Joystick_Junkies.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF52EC6D9528A988166BACAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F18D9F330169BF4BAEEC064 /* Pods-Joystick Junkies.debug.xcconfig */,
+				474FE03EE6A7BC93C5EF6284 /* Pods-Joystick Junkies.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F4AE3AF2036AAA6002B06CE /* Build configuration list for PBXNativeTarget "Joystick Junkies" */;
 			buildPhases = (
+				0DEF12679FDDC7B4F7880D6A /* [CP] Check Pods Manifest.lock */,
 				3F4AE3992036AAA5002B06CE /* Sources */,
 				3F4AE39A2036AAA5002B06CE /* Frameworks */,
 				3F4AE39B2036AAA5002B06CE /* Resources */,
+				CEA8F3119AD4B433C67926F8 /* [CP] Embed Pods Frameworks */,
+				AA3A7A707BA35599E0EC5936 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,6 +178,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DEF12679FDDC7B4F7880D6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Joystick Junkies-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA3A7A707BA35599E0EC5936 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEA8F3119AD4B433C67926F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F4AE3992036AAA5002B06CE /* Sources */ = {
@@ -300,6 +383,7 @@
 		};
 		3F4AE3B02036AAA6002B06CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F18D9F330169BF4BAEEC064 /* Pods-Joystick Junkies.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -314,6 +398,7 @@
 		};
 		3F4AE3B12036AAA6002B06CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474FE03EE6A7BC93C5EF6284 /* Pods-Joystick Junkies.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

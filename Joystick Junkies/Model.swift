@@ -57,7 +57,8 @@ class Game{
             registered = false
             message += "Enter Confirm Password \n"
         }
-        if password.trimmingCharacters(in: .whitespaces).count > 0 ||  confirmPassword.trimmingCharacters(in: .whitespaces).count > 0 || password != confirmPassword{
+       // print(password.trimmingCharacters(in: .whitespaces).count)
+        if password.trimmingCharacters(in: .whitespaces).count < 0 ||  confirmPassword.trimmingCharacters(in: .whitespaces).count < 0 || password != confirmPassword{
             registered = false
             message += "Passwords Do not match \n"
         }
