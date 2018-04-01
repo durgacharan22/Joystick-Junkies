@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -16,10 +17,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Do any additional setup after loading the view.
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
