@@ -7,19 +7,25 @@
 //
 
 import UIKit
-
+import Parse
 class GamesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let rightBarButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.action(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarButton
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    @objc func action(_ sender: UIBarButtonItem!){
+        PFUser.logOut()
+        
+        print("\(PFUser.current()) user logged out")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

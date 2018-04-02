@@ -458,6 +458,10 @@
                         <color key="backgroundColor" red="0.63180874048737046" green="0.63845935880829008" blue="0.63845935880829008" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="3iR-rS-Jc3"/>
                     </view>
+                    <connections>
+                        <outlet property="loginBTN" destination="jOa-On-uGy" id="qc2-WB-Oma"/>
+                        <outlet property="signUp" destination="4T1-UM-GrO" id="MIF-ZC-elV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3n6-Z7-dXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Wh5-k6-5vA" userLabel="Exit" sceneMemberID="exit"/>
@@ -520,6 +524,7 @@
                                 </button>
                             </barButtonItem>
                         </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="m90-Y5-vpT"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s5c-i4-Z3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -811,9 +816,9 @@
         <image name="imageuploading" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zef-tG-FVC"/>
-        <segue reference="tYf-G7-SCM"/>
+        <segue reference="Iu1-Di-oIG"/>
+        <segue reference="iAm-oe-kWq"/>
         <segue reference="gDH-Kg-skf"/>
-        <segue reference="dSd-Pq-ZB4"/>
+        <segue reference="chA-AL-noR"/>
     </inferredMetricsTieBreakers>
 </document>

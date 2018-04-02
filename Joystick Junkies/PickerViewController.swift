@@ -10,6 +10,9 @@ import UIKit
 import Parse
 
 class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    @IBOutlet weak var loginBTN: UIButton!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -17,13 +20,26 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        // Do any additional setup after loading the view.
+        
+        if PFUser.current() != nil {
+            self.loginBTN.isHidden = true
+            self.signUp.isHidden = true
+        }
     }
+    
+    @IBOutlet weak var signUp: UIButton!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if PFUser.current() != nil {
+            self.loginBTN.isHidden = true
+            self.signUp.isHidden = true
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 3
     }
