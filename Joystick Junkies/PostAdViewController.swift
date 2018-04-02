@@ -70,29 +70,6 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     
     
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
@@ -110,6 +87,28 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                 Game["Description"] = descriptionLBL.text!
                 let PNGImage = UIImagePNGRepresentation(self.selectedImage.image!)
                 Game["UploadedImage"] = PFFile(name: self.gameName.text!, data: PNGImage!)
+                
+                
+                let query = PFQuery(className: "Genre")
+                query.whereKey("Genre", equalTo: self.gameGenre.text!)
+                do {
+                    let obj = try query.getFirstObject()
+                    
+                    Game["GenreID"] = obj
+                    
+                    Game.saveInBackground(block: { (success, error) -> Void in
+                        if success {
+                            print("Success")
+                        } else {
+                            print("-----------------\(String(describing: error))")
+                            
+                        }
+                        
+                    })
+                    
+                } catch {
+                    print(error)
+
                 Genre.saveInBackground(block: { (success,error) -> Void in
                     if success {
                         let query = PFQuery(className: "Genre")
@@ -131,19 +130,15 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                             }
                             
                         })
-                        
-                        
                     }else {
-                        print(error)
+                          print("-----------------\(String(describing: error))")
                     }
                 })
+           }
                 
           }
         }
         
     }
-
-    ///
- 
 
 }
