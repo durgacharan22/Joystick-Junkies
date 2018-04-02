@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2BBCA4207065A3002D9C36 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2BBCA3207065A3002D9C36 /* Genre.swift */; };
 		3F4AE3A12036AAA5002B06CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A02036AAA5002B06CE /* AppDelegate.swift */; };
 		3F4AE3A32036AAA5002B06CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A22036AAA5002B06CE /* ViewController.swift */; };
 		3F4AE3A62036AAA5002B06CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A42036AAA5002B06CE /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F2BBCA3207065A3002D9C36 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		3F4AE39D2036AAA5002B06CE /* Joystick Junkies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Joystick Junkies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4AE3A02036AAA5002B06CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F4AE3A22036AAA5002B06CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				3F4AE3A22036AAA5002B06CE /* ViewController.swift */,
 				3F4AE3A42036AAA5002B06CE /* Main.storyboard */,
 				3FB306302053956400FFE464 /* PostAdViewController.swift */,
+				3F2BBCA3207065A3002D9C36 /* Genre.swift */,
 				3FB3062E2053921200FFE464 /* PickerViewController.swift */,
 				3FAFE6DE205387AF006EDF5D /* GameInfoViewController.swift */,
 				3FF68FAB20534B1000FAA3AF /* GamesTableViewController.swift */,
@@ -249,6 +252,7 @@
 				3F4AE3A32036AAA5002B06CE /* ViewController.swift in Sources */,
 				3F4AE3A12036AAA5002B06CE /* AppDelegate.swift in Sources */,
 				3FAFE6DF205387AF006EDF5D /* GameInfoViewController.swift in Sources */,
+				3F2BBCA4207065A3002D9C36 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -643,13 +643,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8j-jW-V22">
-                                <rect key="frame" x="161" y="441" width="114" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvy-Aq-kQW">
+                                <rect key="frame" x="219" y="453" width="67" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" backgroundImage="imageuploading"/>
+                                <connections>
+                                    <action selector="uploadImages:" destination="cyu-yS-wUY" eventType="touchUpInside" id="HKo-8a-qmC"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gB-dU-X2d">
+                                <rect key="frame" x="34" y="437" width="128" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.6153052137305699" green="0.6153052137305699" blue="0.6153052137305699" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="8GE-vA-g0r"/>
@@ -660,6 +665,7 @@
                         <outlet property="gameGenre" destination="bHr-Bh-Dpe" id="nuF-CW-MuE"/>
                         <outlet property="gameName" destination="cij-i6-y4R" id="lZX-kk-Ife"/>
                         <outlet property="gamePrice" destination="qLY-EL-rc0" id="oRO-kD-pGb"/>
+                        <outlet property="selectedImage" destination="0gB-dU-X2d" id="SOO-Sq-QdZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdH-lV-7Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -802,6 +808,7 @@
     </scenes>
     <resources>
         <image name="Mario" width="976" height="549"/>
+        <image name="imageuploading" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zef-tG-FVC"/>
