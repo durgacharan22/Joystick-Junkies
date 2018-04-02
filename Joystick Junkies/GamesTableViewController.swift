@@ -23,7 +23,7 @@ class GamesTableViewController: UITableViewController {
     }
     @objc func action(_ sender: UIBarButtonItem!){
         PFUser.logOut()
-        
+        dismiss(animated: true, completion: nil)
         print("\(PFUser.current()) user logged out")
     }
     override func didReceiveMemoryWarning() {

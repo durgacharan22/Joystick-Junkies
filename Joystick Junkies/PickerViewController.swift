@@ -24,6 +24,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
         if PFUser.current() != nil {
             self.loginBTN.isHidden = true
             self.signUp.isHidden = true
+        }else{
+            self.loginBTN.isHidden = false
+            self.signUp.isHidden = false
         }
     }
     
@@ -33,6 +36,9 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
         if PFUser.current() != nil {
             self.loginBTN.isHidden = true
             self.signUp.isHidden = true
+        }else{
+            self.loginBTN.isHidden = false
+            self.signUp.isHidden = false
         }
     }
     
