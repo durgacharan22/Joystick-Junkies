@@ -28,9 +28,23 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             self.loginBTN.isHidden = false
             self.signUp.isHidden = false
         }
+        let query = PFQuery(className:"Genre")
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                self.genres = objects as! [PFObject]
+                self.pv?.reloadAllComponents()
+                
+            } else {
+                print("error in picker table view controller")
+            }
+            
+        }
     }
     
     @IBOutlet weak var signUp: UIButton!
+    
+    var genres:[PFObject] = []
     
     override func viewDidAppear(_ animated: Bool) {
         if PFUser.current() != nil {
@@ -40,18 +54,35 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             self.loginBTN.isHidden = false
             self.signUp.isHidden = false
         }
+        let query = PFQuery(className:"Genre")
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                self.genres = objects as! [PFObject]
+                self.pv?.reloadAllComponents()
+            
+            } else {
+                print("error in picker table view controller")
+            }
+            
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    var pv:UIPickerView?
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        pv = pickerView
+        return genres.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return AppDelegate.model.gamesGenre[row]
+        let genre = genres[row]
+        return genre["Genre"] as! String
     }
     /*
     // MARK: - Navigation

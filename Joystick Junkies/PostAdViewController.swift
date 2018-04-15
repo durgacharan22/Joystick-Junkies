@@ -69,52 +69,51 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         dismiss(animated: true, completion: nil)
     }
     
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddItem" {
-            if gameName.text! != ""{
+    @IBAction func PostBTN(_ sender: UIButton) {
+        if gameName.text! != ""{
+            
+            AppDelegate.model.games.append(gameName.text!)
+            
+            let Game = PFObject(className: "Game")
+            let Genre = PFObject(className: "Genre")
+            Game["Name"] = gameName.text!
+            Game["Price"] = Int(gamePrice.text!)
+            Genre["Genre"] = gameGenre.text!
+            Game["BaseBid"] = Int(basebidLBL.text!)
+            Game["Time"] = Date()
+            Game["Description"] = descriptionLBL.text!
+            let PNGImage = UIImagePNGRepresentation(self.selectedImage.image!)
+            Game["UploadedImage"] = PFFile(name: self.gameName.text!, data: PNGImage!)
+            Game["SellerInfo"] = PFUser.current()
+            
+            
+            let query = PFQuery(className: "Genre")
+            query.whereKey("Genre", equalTo: self.gameGenre.text!)
+            do {
+                let obj = try query.getFirstObject()
                 
-                AppDelegate.model.games.append(gameName.text!)
+                Game["GenreID"] = obj
                 
-                let Game = PFObject(className: "Game")
-                let Genre = PFObject(className: "Genre")
-                Game["Name"] = gameName.text!
-                Game["Price"] = Int(gamePrice.text!)
-                Genre["Genre"] = gameGenre.text!
-                Game["BaseBid"] = Int(basebidLBL.text!)
-                Game["Time"] = Date()
-                Game["Description"] = descriptionLBL.text!
-                let PNGImage = UIImagePNGRepresentation(self.selectedImage.image!)
-                Game["UploadedImage"] = PFFile(name: self.gameName.text!, data: PNGImage!)
-                
-                
-                let query = PFQuery(className: "Genre")
-                query.whereKey("Genre", equalTo: self.gameGenre.text!)
-                do {
-                    let obj = try query.getFirstObject()
-                    
-                    Game["GenreID"] = obj
-                    
-                    Game.saveInBackground(block: { (success, error) -> Void in
-                        if success {
-                            print("Success")
-                        } else {
-                            print("-----------------\(String(describing: error))")
-                            
-                        }
+                Game.saveInBackground(block: { (success, error) -> Void in
+                    if success {
+                     self.performSegue(withIdentifier: "AddItem", sender: self)
+                        print("Success")
+                    } else {
+                        print("-----------------\(String(describing: error))")
                         
-                    })
+                    }
                     
-                } catch {
-                    print(error)
-
+                })
+                
+            } catch {
+                print(error)
+                
                 Genre.saveInBackground(block: { (success,error) -> Void in
                     if success {
                         let query = PFQuery(className: "Genre")
                         query.whereKey("Genre", equalTo: self.gameGenre.text!)
                         do {
-                         let obj = try query.getFirstObject()
+                            let obj = try query.getFirstObject()
                             
                             Game["GenreID"] = obj
                         } catch {
@@ -123,6 +122,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                         
                         Game.saveInBackground(block: { (success, error) -> Void in
                             if success {
+                                    self.performSegue(withIdentifier: "AddItem", sender: self)
                                 print("Success")
                             } else {
                                 print("-----------------\(String(describing: error))")
@@ -131,14 +131,17 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                             
                         })
                     }else {
-                          print("-----------------\(String(describing: error))")
+                        print("-----------------\(String(describing: error))")
                     }
                 })
-           }
-                
-          }
+            }
+            
         }
         
+        
+        
     }
+    
+
 
 }

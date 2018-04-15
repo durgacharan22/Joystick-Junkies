@@ -9,22 +9,46 @@
 import UIKit
 import Parse
 class GamesTableViewController: UITableViewController {
-
+    var Games:[PFObject] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let rightBarButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.action(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let query = PFQuery(className:"Game")
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                self.Games = objects as! [PFObject]
+                self.tableView.reloadData()
+            } else {
+                print("error in games table view controller")
+            }
+            
+        }
     }
+    
     @objc func action(_ sender: UIBarButtonItem!){
         PFUser.logOut()
         dismiss(animated: true, completion: nil)
-        print("\(PFUser.current()) user logged out")
+        print("\(String(describing: PFUser.current())) user logged out")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let query = PFQuery(className:"Game")
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                self.Games = objects!
+                self.tv?.reloadData()
+            } else {
+                print("error in games table view controller")
+            }
+            
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,19 +59,28 @@ class GamesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
-
+    var tv:UITableView?
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return AppDelegate.model.games.count
+        tv = tableView
+        return Games.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameTableViewCell
-        cell.gameImage.image = UIImage(named: AppDelegate.model.games[indexPath.row])
-        cell.desc.text = AppDelegate.model.games[indexPath.row]
-    
+        let game = Games[indexPath.row]
+        let data = game["UploadedImage"] as! PFFile
+        do {
+         
+        cell.gameImage.image = try UIImage(data: data.getData())
+            cell.desc.text = game["Name"] as? String
+            
+        }catch {
+            print("error image fetching games table view controller")
+        }
 
         return cell
     }
@@ -99,7 +132,7 @@ class GamesTableViewController: UITableViewController {
 //            print((tableView.indexPathForSelectedRow?.row)!)
 //            var a:Int = (tableView.indexPathForSelectedRow?.row)!
              let vc = segue.destination as! GameInfoViewController
-            vc.game = AppDelegate.model.games[(tableView.indexPathForSelectedRow?.row)!]
+            vc.game = Games[(tableView.indexPathForSelectedRow?.row)!]
 
         }
     }

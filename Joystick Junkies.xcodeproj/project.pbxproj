@@ -13,6 +13,7 @@
 		3F4AE3A62036AAA5002B06CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A42036AAA5002B06CE /* Main.storyboard */; };
 		3F4AE3A82036AAA6002B06CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A72036AAA6002B06CE /* Assets.xcassets */; };
 		3F4AE3AB2036AAA6002B06CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4AE3A92036AAA6002B06CE /* LaunchScreen.storyboard */; };
+		3F85A94E2082AFC9000AD816 /* SellerDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F85A94D2082AFC9000AD816 /* SellerDescriptionViewController.swift */; };
 		3FAFE6DF205387AF006EDF5D /* GameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAFE6DE205387AF006EDF5D /* GameInfoViewController.swift */; };
 		3FB3062F2053921200FFE464 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3062E2053921200FFE464 /* PickerViewController.swift */; };
 		3FB306312053956400FFE464 /* PostAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB306302053956400FFE464 /* PostAdViewController.swift */; };
@@ -32,6 +33,7 @@
 		3F4AE3A72036AAA6002B06CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F4AE3AA2036AAA6002B06CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F4AE3AC2036AAA6002B06CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F85A94D2082AFC9000AD816 /* SellerDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDescriptionViewController.swift; sourceTree = "<group>"; };
 		3FAFE6DE205387AF006EDF5D /* GameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewController.swift; sourceTree = "<group>"; };
 		3FB3062E2053921200FFE464 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		3FB306302053956400FFE464 /* PostAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				3F4AE3A02036AAA5002B06CE /* AppDelegate.swift */,
 				3F4AE3A22036AAA5002B06CE /* ViewController.swift */,
 				3F4AE3A42036AAA5002B06CE /* Main.storyboard */,
+				3F85A94D2082AFC9000AD816 /* SellerDescriptionViewController.swift */,
 				3FB306302053956400FFE464 /* PostAdViewController.swift */,
 				3F2BBCA3207065A3002D9C36 /* Genre.swift */,
 				3FB3062E2053921200FFE464 /* PickerViewController.swift */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FF68FAA20534A9800FAA3AF /* GameTableViewCell.swift in Sources */,
+				3F85A94E2082AFC9000AD816 /* SellerDescriptionViewController.swift in Sources */,
 				3FF68FAC20534B1000FAA3AF /* GamesTableViewController.swift in Sources */,
 				3FB3062F2053921200FFE464 /* PickerViewController.swift in Sources */,
 				3FEED45820532DBC00CEC59A /* LoginViewController.swift in Sources */,
