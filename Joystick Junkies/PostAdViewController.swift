@@ -9,11 +9,26 @@
 import UIKit
 import Parse
 
-class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate {
+    
+    var Genres = ["Action","Thriller","Kids","Racing","Puzzles"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Genres.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return Genres[row]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        gameGenre.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,15 +73,16 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             dismiss(animated: true, completion: nil)
             self.selectedImage.image = finalImage
             
-         
-            
-            
         }
         
     }
     
     private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        gameGenre.text = Genres[row]
     }
     
     @IBAction func PostBTN(_ sender: UIButton) {
@@ -141,6 +157,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         
         
     }
+    
     
 
 

@@ -432,7 +432,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="lZN-eP-vcf" kind="show" id="Iu1-Di-oIG"/>
+                                    <segue destination="lZN-eP-vcf" kind="show" identifier="PickerToGames" id="Iu1-Di-oIG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQC-9T-Udh">
@@ -665,6 +665,14 @@
                                 <rect key="frame" x="34" y="437" width="128" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fkc-r6-wPS">
+                                <rect key="frame" x="112" y="122" width="247" height="67"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cyu-yS-wUY" id="tI3-2s-uI8"/>
+                                    <outlet property="delegate" destination="cyu-yS-wUY" id="7E4-KD-uYF"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.6153052137305699" green="0.6153052137305699" blue="0.6153052137305699" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="8GE-vA-g0r"/>
@@ -681,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdH-lV-7Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2333.5999999999999" y="870.31484257871068"/>
+            <point key="canvasLocation" x="2231" y="887"/>
         </scene>
         <!--Game Information-->
         <scene sceneID="uVn-mB-9gJ">
@@ -862,7 +870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OVh-0t-TMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4101.6000000000004" y="913.49325337331345"/>
+            <point key="canvasLocation" x="4174" y="914"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SPC-G0-sAC">
@@ -888,7 +896,7 @@
         <image name="imageuploading" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DmE-A7-oWZ"/>
+        <segue reference="Iu1-Di-oIG"/>
         <segue reference="tYf-G7-SCM"/>
         <segue reference="gDH-Kg-skf"/>
         <segue reference="chA-AL-noR"/>

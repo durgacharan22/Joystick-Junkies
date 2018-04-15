@@ -77,21 +77,41 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         pv = pickerView
-        return genres.count
+        return genres.count + 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if genres.count != row {
         let genre = genres[row]
-        return genre["Genre"] as! String
+        return genre["Genre"] as? String
+        }
+        return "All"
     }
-    /*
+    
+    var selectedGenre = ""
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(genres)
+        if genres.count != row {
+        selectedGenre = genres[row].objectId!
+        }else {
+            selectedGenre = "All"
+        }
+        
+        print(selectedGenre)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "PickerToGames" {
+        let vc = segue.destination as! UINavigationController
+            let v = vc.childViewControllers[0] as! GamesTableViewController
+            v.genreid = selectedGenre
+            print("\(selectedGenre) selected genre")
+        }
     }
-    */
+ 
 
 }

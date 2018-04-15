@@ -8,27 +8,38 @@
 
 import UIKit
 import Parse
+
 class GamesTableViewController: UITableViewController {
+    
     var Games:[PFObject] = []
-    
-    
+    var genreid:String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let rightBarButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.action(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
 
-        let query = PFQuery(className:"Game")
-        query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                self.Games = objects as! [PFObject]
-                self.tableView.reloadData()
-            } else {
-                print("error in games table view controller")
-            }
-            
-        }
+//        let query = PFQuery(className:"Game")
+//       // query.whereKey("GenreID", equalTo: genreid)
+//        query.findObjectsInBackground {
+//            (objects: [PFObject]?, error: Error?) -> Void in
+//            if error == nil {
+//         //       print(self.genreid)
+//                for ele in objects! {
+//                    let obj = ele["GenreID"] as! PFObject
+//                    if obj.objectId! == self.genreid {
+//                        self.Games.append(ele)
+//                    }
+//                }
+//
+//              //  self.Games = objects as! [PFObject]
+//                self.tableView.reloadData()
+//            } else {
+//                print("error in games table view controller")
+//            }
+//
+//        }
     }
     
     @objc func action(_ sender: UIBarButtonItem!){
@@ -36,13 +47,30 @@ class GamesTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
         print("\(String(describing: PFUser.current())) user logged out")
     }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         
         let query = PFQuery(className:"Game")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
-                self.Games = objects!
+
+                for ele in objects! {
+                    let obj = ele["GenreID"] as! PFObject
+                //    print(self.genreid == "")
+                 //   print(self.genreid?.count > 0)
+                    if self.genreid != nil && self.genreid != "" && self.genreid != "All"{
+                        
+                    if obj.objectId! == self.genreid {
+                        self.Games.append(ele)
+                        }
+                        
+                    } else {
+                    self.Games.append(ele)
+                    }
+                }
+                
                 self.tv?.reloadData()
             } else {
                 print("error in games table view controller")
@@ -50,6 +78,7 @@ class GamesTableViewController: UITableViewController {
             
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -129,8 +158,6 @@ class GamesTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "a" {
-//            print((tableView.indexPathForSelectedRow?.row)!)
-//            var a:Int = (tableView.indexPathForSelectedRow?.row)!
              let vc = segue.destination as! GameInfoViewController
             vc.game = Games[(tableView.indexPathForSelectedRow?.row)!]
 
