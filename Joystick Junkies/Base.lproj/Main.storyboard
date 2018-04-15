@@ -594,7 +594,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="PostBTN:" destination="cyu-yS-wUY" eventType="touchUpInside" id="lrG-Ne-Pf6"/>
-                                    <segue destination="lZN-eP-vcf" kind="presentation" identifier="AddItem" id="zef-tG-FVC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DL8-Mp-at2">
@@ -677,6 +676,7 @@
                         <outlet property="gameName" destination="cij-i6-y4R" id="lZX-kk-Ife"/>
                         <outlet property="gamePrice" destination="qLY-EL-rc0" id="oRO-kD-pGb"/>
                         <outlet property="selectedImage" destination="0gB-dU-X2d" id="SOO-Sq-QdZ"/>
+                        <segue destination="lZN-eP-vcf" kind="presentation" identifier="AddItem" id="DmE-A7-oWZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdH-lV-7Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -888,7 +888,7 @@
         <image name="imageuploading" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zef-tG-FVC"/>
+        <segue reference="DmE-A7-oWZ"/>
         <segue reference="tYf-G7-SCM"/>
         <segue reference="gDH-Kg-skf"/>
         <segue reference="chA-AL-noR"/>
