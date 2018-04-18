@@ -25,11 +25,11 @@ class GameInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+     
         let image = game!["UploadedImage"] as! PFFile
         do {
             img.image = try UIImage(data: image.getData())
-        } catch  {
+        } catch {
             print("error image fetching in game info view controller")
         }
         GameNameLBL.text = game!["Name"] as? String
@@ -50,11 +50,19 @@ class GameInfoViewController: UIViewController {
         }
         
         
+        
 
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        if PFUser.current() == nil {
+            self.navigationItem.rightBarButtonItem?.title = "";
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }else{
+            self.navigationItem.rightBarButtonItem?.title = "Logout";
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
         let image = game!["UploadedImage"] as! PFFile
         do {
             img.image = try UIImage(data: image.getData())
@@ -90,6 +98,10 @@ class GameInfoViewController: UIViewController {
 
     @IBOutlet weak var latestBidTF: UITextField!
     
+    @IBAction func LogoutBTNClicked(_ sender: Any) {
+        PFUser.logOut()
+        self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController, animated: true)
+    }
     
     @IBAction func bidBTN(_ sender: Any) {
        // print(LatestBid.text)

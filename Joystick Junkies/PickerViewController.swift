@@ -12,22 +12,19 @@ import Parse
 class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewDataSource {
     
     @IBOutlet weak var loginBTN: UIButton!
+    @IBOutlet weak var LogoutBTN: UIButton!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-
+    @IBAction func LogoutBTNClicked(_ sender: Any) {
+        PFUser.logOut()
+        self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if PFUser.current() != nil {
-            self.loginBTN.isHidden = true
-            self.signUp.isHidden = true
-        }else{
-            self.loginBTN.isHidden = false
-            self.signUp.isHidden = false
-        }
         let query = PFQuery(className:"Genre")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
@@ -45,16 +42,21 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var signUp: UIButton!
     
     var genres:[PFObject] = []
-    
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if PFUser.current() != nil {
             self.loginBTN.isHidden = true
             self.signUp.isHidden = true
+            self.LogoutBTN.isHidden = false
         }else{
             self.loginBTN.isHidden = false
             self.signUp.isHidden = false
+            self.LogoutBTN.isHidden = true
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+     
         let query = PFQuery(className:"Genre")
+        
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {

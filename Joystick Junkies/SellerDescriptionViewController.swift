@@ -7,22 +7,38 @@
 //
 
 import UIKit
-
+import Parse
 class SellerDescriptionViewController: UIViewController {
 
     @IBOutlet weak var phonenumberLBL: UILabel!
     @IBOutlet weak var emailIDLBL: UILabel!
     @IBOutlet weak var nameLBL: UILabel!
     var data:[String] = []
+    
+    
+    @IBAction func LogoutBTNClicked(_ sender: Any) {
+        PFUser.logOut()
+        self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController, animated: true)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         nameLBL.text = "\(data[0]) \(data[1])"
         emailIDLBL.text = data[2]
         phonenumberLBL.text = data[3]
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if PFUser.current() == nil {
+            self.navigationItem.rightBarButtonItem?.title = "";
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }else{
+            self.navigationItem.rightBarButtonItem?.title = "Logout";
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

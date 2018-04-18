@@ -28,7 +28,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        gameGenre.isHidden = true
+       // gameGenre.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +43,10 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var gamePrice: UITextField!
     @IBOutlet weak var descriptionLBL: UITextView!
     @IBOutlet weak var basebidLBL: UITextField!
+    
+    
+    
+    
     @IBAction func uploadImages(_ sender: Any) {
         
         let picker = UIImagePickerController()

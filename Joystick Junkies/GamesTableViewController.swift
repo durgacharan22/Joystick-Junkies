@@ -16,41 +16,27 @@ class GamesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let rightBarButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.action(_:)))
-        self.navigationItem.rightBarButtonItem = rightBarButton
 
-//        let query = PFQuery(className:"Game")
-//       // query.whereKey("GenreID", equalTo: genreid)
-//        query.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//         //       print(self.genreid)
-//                for ele in objects! {
-//                    let obj = ele["GenreID"] as! PFObject
-//                    if obj.objectId! == self.genreid {
-//                        self.Games.append(ele)
-//                    }
-//                }
-//
-//              //  self.Games = objects as! [PFObject]
-//                self.tableView.reloadData()
-//            } else {
-//                print("error in games table view controller")
-//            }
-//
-//        }
     }
+    
     
     @objc func action(_ sender: UIBarButtonItem!){
         PFUser.logOut()
-        dismiss(animated: true, completion: nil)
-        print("\(String(describing: PFUser.current())) user logged out")
+        self.present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController, animated: true)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if PFUser.current() != nil {
+            let rightBarButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.action(_:)))
+            self.navigationItem.rightBarButtonItem = rightBarButton
+        }else{
+            self.navigationItem.rightBarButtonItem?.title = ""
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
-        
+      
         let query = PFQuery(className:"Game")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
