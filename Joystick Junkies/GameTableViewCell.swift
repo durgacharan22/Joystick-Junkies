@@ -12,5 +12,6 @@ class GameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var EndTimeLBL: UILabel!
     
 }

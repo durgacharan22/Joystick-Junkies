@@ -41,11 +41,9 @@ class GamesTableViewController: UITableViewController {
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
-
+                self.Games = []
                 for ele in objects! {
                     let obj = ele["GenreID"] as! PFObject
-                //    print(self.genreid == "")
-                 //   print(self.genreid?.count > 0)
                     if self.genreid != nil && self.genreid != "" && self.genreid != "All"{
                         
                     if obj.objectId! == self.genreid {
@@ -83,7 +81,7 @@ class GamesTableViewController: UITableViewController {
         tv = tableView
         return Games.count
     }
-
+    var timer = Timer()
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameTableViewCell
         let game = Games[indexPath.row]
@@ -96,11 +94,25 @@ class GamesTableViewController: UITableViewController {
         }catch {
             print("error image fetching games table view controller")
         }
-
+        let endDate = game["EndTime"] as! Date
+        var interval = endDate.timeIntervalSince(Date())
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            interval = interval - 1
+            cell.EndTimeLBL.text = self.timeString(time: interval)
+        })
+        
+        
         return cell
     }
  
-
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

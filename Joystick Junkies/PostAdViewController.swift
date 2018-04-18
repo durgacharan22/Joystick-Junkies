@@ -11,6 +11,10 @@ import Parse
 
 class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate {
     
+    @IBOutlet weak var EndDate: UIDatePicker!
+    
+
+    
     var Genres = ["Action","Thriller","Kids","Racing","Puzzles"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -28,14 +32,14 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       // gameGenre.isHidden = true
+        gameGenre.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
+ 
     
     @IBOutlet weak var selectedImage: UIImageView!
     @IBOutlet weak var gameName: UITextField!
@@ -81,6 +85,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         
     }
     
+    
     private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -91,6 +96,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     
     @IBAction func PostBTN(_ sender: UIButton) {
         if gameName.text! != ""{
+            print("end date : \(EndDate.date)")
             
             AppDelegate.model.games.append(gameName.text!)
             
@@ -99,6 +105,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             Game["Name"] = gameName.text!
             Game["Price"] = Int(gamePrice.text!)
             Genre["Genre"] = gameGenre.text!
+            Game["EndTime"] = EndDate.date
             Game["BaseBid"] = Int(basebidLBL.text!)
             Game["Time"] = Date()
             Game["Description"] = descriptionLBL.text!
@@ -110,6 +117,7 @@ class PostAdViewController: UIViewController,UIImagePickerControllerDelegate,UIN
             let query = PFQuery(className: "Genre")
             query.whereKey("Genre", equalTo: self.gameGenre.text!)
             do {
+                print("done")
                 let obj = try query.getFirstObject()
                 
                 Game["GenreID"] = obj

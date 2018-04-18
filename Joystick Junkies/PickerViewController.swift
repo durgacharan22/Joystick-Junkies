@@ -13,6 +13,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     
     @IBOutlet weak var loginBTN: UIButton!
     @IBOutlet weak var LogoutBTN: UIButton!
+    @IBOutlet weak var PostAnAddBTN: UIButton!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -29,7 +30,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
-                self.genres = objects as! [PFObject]
+                self.genres = objects!
                 self.pv?.reloadAllComponents()
                 
             } else {
@@ -42,15 +43,18 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var signUp: UIButton!
     
     var genres:[PFObject] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         if PFUser.current() != nil {
             self.loginBTN.isHidden = true
             self.signUp.isHidden = true
             self.LogoutBTN.isHidden = false
+            PostAnAddBTN.isHidden = false
         }else{
             self.loginBTN.isHidden = false
             self.signUp.isHidden = false
             self.LogoutBTN.isHidden = true
+             PostAnAddBTN.isHidden = true
         }
     }
     override func viewDidAppear(_ animated: Bool) {
