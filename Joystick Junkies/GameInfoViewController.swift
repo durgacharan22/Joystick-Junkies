@@ -22,6 +22,7 @@ class GameInfoViewController: UIViewController {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var descriptionTV: UITextView!
     @IBOutlet weak var TimeLBL: UILabel!
+    @IBOutlet weak var bidBTN: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +58,11 @@ class GameInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if PFUser.current() == nil {
+            self.bidBTN.isHidden = true
             self.navigationItem.rightBarButtonItem?.title = "";
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         }else{
+            self.bidBTN.isHidden = false
             self.navigationItem.rightBarButtonItem?.title = "Logout";
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
@@ -69,6 +72,15 @@ class GameInfoViewController: UIViewController {
         } catch  {
             print("error image fetching in game info view controller")
         }
+        var timer = Timer()
+        let endDate = game!["EndTime"] as! Date
+        var interval = endDate.timeIntervalSince(Date())
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            interval = interval - 1
+            self.TimeLBL.text = self.timeString(time: interval)
+        })
+        
         GameNameLBL.text = game!["Name"] as? String
         descriptionTV.text = game!["Description"] as! String
         PriceLBL.text = "\(game!["Price"]!)"
@@ -89,7 +101,12 @@ class GameInfoViewController: UIViewController {
             }
         }
     }
-
+    func timeString(time:TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -105,16 +122,21 @@ class GameInfoViewController: UIViewController {
     
     @IBAction func bidBTN(_ sender: Any) {
        // print(LatestBid.text)
+        
         let bidAmount = Int((latestBidTF.text?.trimmingCharacters(in: [" "]))!)!
         if let bid = game!["LatestBid"] {
-            if bidAmount > Int(bid as! Int) {
+            if bidAmount > Int(bid as! Int) && bidAmount > game!["BaseBid"] as! Int {
                 game!["LatestBid"] = bidAmount
                 LatestBid.text = "\(String(describing: bidAmount))"
             }
             
         }else{
-            game!["LatestBid"] = bidAmount
-            LatestBid.text = "\(String(describing: bidAmount))"
+            
+            if bidAmount > game!["BaseBid"] as! Int {
+                game!["LatestBid"] = bidAmount
+                LatestBid.text = "\(String(describing: bidAmount))"
+            }
+
         }
         game?.saveInBackground(block: { (success, error) -> Void in
             if success {
