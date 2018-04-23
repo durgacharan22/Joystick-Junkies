@@ -51,6 +51,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             self.signUp.isHidden = true
             self.LogoutBTN.isHidden = false
             PostAnAddBTN.isHidden = false
+            welcomeLBL.text = PFUser.current()?.objectId
             
         }else{
             self.loginBTN.isHidden = false
