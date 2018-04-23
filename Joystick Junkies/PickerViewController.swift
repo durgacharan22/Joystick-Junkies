@@ -14,6 +14,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var loginBTN: UIButton!
     @IBOutlet weak var LogoutBTN: UIButton!
     @IBOutlet weak var PostAnAddBTN: UIButton!
+    @IBOutlet weak var welcomeLBL: UILabel!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -50,6 +51,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             self.signUp.isHidden = true
             self.LogoutBTN.isHidden = false
             PostAnAddBTN.isHidden = false
+            
         }else{
             self.loginBTN.isHidden = false
             self.signUp.isHidden = false
