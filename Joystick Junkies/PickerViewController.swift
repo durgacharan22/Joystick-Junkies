@@ -15,6 +15,7 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var LogoutBTN: UIButton!
     @IBOutlet weak var PostAnAddBTN: UIButton!
     @IBOutlet weak var welcomeLBL: UILabel!
+    @IBOutlet weak var postsBTN: UIButton!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -51,7 +52,10 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             self.signUp.isHidden = true
             self.LogoutBTN.isHidden = false
             PostAnAddBTN.isHidden = false
-            welcomeLBL.text = PFUser.current()?.objectId
+      
+            print(PFUser.current()!["firstName"])
+      
+            welcomeLBL.text = "Welcome, \(PFUser.current()!["firstName"]!) \(PFUser.current()!["lastName"]!)"
             
         }else{
             self.loginBTN.isHidden = false
@@ -60,6 +64,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
              PostAnAddBTN.isHidden = true
         }
     }
+    
+    var Games:[PFObject] = []
     override func viewDidAppear(_ animated: Bool) {
      
         let query = PFQuery(className:"Genre")
@@ -72,6 +78,31 @@ class PickerViewController: UIViewController, UIPickerViewDelegate,UIPickerViewD
             
             } else {
                 print("error in picker table view controller")
+            }
+            
+        }
+       
+        let query1 = PFQuery(className:"Game")
+        
+        query1.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                self.Games = []
+                for ele in objects! {
+                    let obj = ele["SellerInfo"] as! PFObject
+    
+                        if obj.objectId! == PFUser.current()?.objectId {
+                            self.Games.append(ele)
+                        }
+                }
+                if(self.Games.count > 0){
+                    self.postsBTN.isHidden = false
+                }else{
+                    self.postsBTN.isHidden = true
+                }
+         
+            } else {
+                print("error in games table view controller")
             }
             
         }

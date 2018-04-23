@@ -23,6 +23,9 @@
 		3FEED45820532DBC00CEC59A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEED45720532DBC00CEC59A /* LoginViewController.swift */; };
 		3FF68FAA20534A9800FAA3AF /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF68FA920534A9800FAA3AF /* GameTableViewCell.swift */; };
 		3FF68FAC20534B1000FAA3AF /* GamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF68FAB20534B1000FAA3AF /* GamesTableViewController.swift */; };
+		4ACEC3D4208D802F00BB5220 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEC3D3208D802F00BB5220 /* PostsTableViewController.swift */; };
+		4ACEC3D6208D81A500BB5220 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEC3D5208D81A500BB5220 /* PostViewController.swift */; };
+		4ACEC3D8208D878C00BB5220 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACEC3D7208D878C00BB5220 /* PostTableViewCell.swift */; };
 		EA189303D94BD07D9BFC988D /* Pods_Joystick_Junkies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F0CC06704D60F0B6E0DE76 /* Pods_Joystick_Junkies.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		3FF68FA920534A9800FAA3AF /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		3FF68FAB20534B1000FAA3AF /* GamesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewController.swift; sourceTree = "<group>"; };
 		474FE03EE6A7BC93C5EF6284 /* Pods-Joystick Junkies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joystick Junkies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies.release.xcconfig"; sourceTree = "<group>"; };
+		4ACEC3D3208D802F00BB5220 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		4ACEC3D5208D81A500BB5220 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		4ACEC3D7208D878C00BB5220 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		6F18D9F330169BF4BAEEC064 /* Pods-Joystick Junkies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Joystick Junkies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Joystick Junkies/Pods-Joystick Junkies.debug.xcconfig"; sourceTree = "<group>"; };
 		C1F0CC06704D60F0B6E0DE76 /* Pods_Joystick_Junkies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Joystick_Junkies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,6 +92,9 @@
 				3F4AE3A02036AAA5002B06CE /* AppDelegate.swift */,
 				3F4AE3A22036AAA5002B06CE /* ViewController.swift */,
 				3F4AE3A42036AAA5002B06CE /* Main.storyboard */,
+				4ACEC3D7208D878C00BB5220 /* PostTableViewCell.swift */,
+				4ACEC3D5208D81A500BB5220 /* PostViewController.swift */,
+				4ACEC3D3208D802F00BB5220 /* PostsTableViewController.swift */,
 				3F759BFB2087F86E00F4C3F4 /* EndDatePickerViewController.swift */,
 				3F759BF92087DC8500F4C3F4 /* ForgotPasswordViewController.swift */,
 				3F85A94D2082AFC9000AD816 /* SellerDescriptionViewController.swift */,
@@ -260,10 +269,13 @@
 				3FB306312053956400FFE464 /* PostAdViewController.swift in Sources */,
 				3FEED45620532BEE00CEC59A /* Model.swift in Sources */,
 				3F4AE3A32036AAA5002B06CE /* ViewController.swift in Sources */,
+				4ACEC3D6208D81A500BB5220 /* PostViewController.swift in Sources */,
 				3F759BFA2087DC8500F4C3F4 /* ForgotPasswordViewController.swift in Sources */,
+				4ACEC3D8208D878C00BB5220 /* PostTableViewCell.swift in Sources */,
 				3F4AE3A12036AAA5002B06CE /* AppDelegate.swift in Sources */,
 				3FAFE6DF205387AF006EDF5D /* GameInfoViewController.swift in Sources */,
 				3F2BBCA4207065A3002D9C36 /* Genre.swift in Sources */,
+				4ACEC3D4208D802F00BB5220 /* PostsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
