@@ -128,6 +128,7 @@ class GameInfoViewController: UIViewController {
             if bidAmount > Int(bid as! Int) && bidAmount > game!["BaseBid"] as! Int {
                 game!["LatestBid"] = bidAmount
                 LatestBid.text = "\(String(describing: bidAmount))"
+                latestBidTF.text = ""
             }
             
         }else{
@@ -135,6 +136,7 @@ class GameInfoViewController: UIViewController {
             if bidAmount > game!["BaseBid"] as! Int {
                 game!["LatestBid"] = bidAmount
                 LatestBid.text = "\(String(describing: bidAmount))"
+                latestBidTF.text = ""
             }
 
         }
@@ -147,6 +149,8 @@ class GameInfoViewController: UIViewController {
             }
             
         })
+        
+        
 
     }
     
